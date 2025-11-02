@@ -1,0 +1,17 @@
+schemaVersion: 2.2.2
+metadata:
+  name: gpu-devspace
+components:
+  - name: tools
+    container:
+      image: registry.harbor.novafirst.de/devspaces/gpu-ubi9@sha256:00cb3c021a22904b8d7c97e9b99050dc13c129afad9d5f380f0e4c7876058180
+      memoryLimit: 8192Mi
+      cpuLimit: 4000m
+      mountSources: true
+    attributes:
+      container-overrides:
+        resources:
+          limits:
+            nvidia.com/mig-1g.12gb: '1'
+          requests:
+            nvidia.com/mig-1g.12gb: '1'
