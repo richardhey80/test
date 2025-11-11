@@ -1,6 +1,6 @@
 schemaVersion: 2.2.2
 metadata:
-  name: gpu-devspace
+  name: gpu-devspace2
 components:
   - name: tools
     container:
