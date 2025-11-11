@@ -5,8 +5,8 @@ components:
   - name: tools
     container:
       image: registry.redhat.io/devspaces/udi-rhel9@sha256:8f980b826039e2a36855a3d19ce163bb8762ff10a34c885ad744698878168b57
-      memoryLimit: 16Gi
-      cpuLimit: 4000m
+      memoryLimit: 4Gi
+      cpuLimit: 2000m
       mountSources: true
     attributes:
       container-overrides:
