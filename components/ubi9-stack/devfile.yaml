@@ -1,0 +1,9 @@
+schemaVersion: 2.2.0
+metadata:
+  name: ubi9-stack
+  description: "Moderner Stack auf UBI9 Basis"
+components:
+  - name: ubi9-container
+    container:
+      image: registry.access.redhat.com/ubi9/ubi:latest
+      memoryLimit: 2Gi

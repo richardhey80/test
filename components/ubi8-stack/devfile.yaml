@@ -1,0 +1,9 @@
+schemaVersion: 2.2.0
+metadata:
+  name: ubi8-stack
+  description: "Legacy Stack auf UBI8 Basis"
+components:
+  - name: ubi8-container
+    container:
+      image: registry.access.redhat.com/ubi8/ubi:latest
+      memoryLimit: 1Gi
