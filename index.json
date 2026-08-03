@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "name": "ubi8-stack",
+      "path": "components/ubi8-stack/devfile.yaml"
+    },
+    {
+      "name": "ubi9-stack",
+      "path": "components/ubi9-stack/devfile.yaml"
+    }
+  ]
+}
