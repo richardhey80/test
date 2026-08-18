@@ -1,17 +1,46 @@
 schemaVersion: 2.2.2
 metadata:
-  name: gpu-devspace2
+  name: adminworkspace
+projects:
+  - name: adminworkspace
+    zip:
+      location: http://devspaces-dashboard.openshift-operators.svc:8080/dashboard/api/airgap-sample/project/download?id=python
 components:
-  - name: tools
+  - name: python
     container:
-      image: registry.redhat.io/devspaces/udi-rhel9@sha256:8f980b826039e2a36855a3d19ce163bb8762ff10a34c885ad744698878168b57
-      memoryLimit: 4Gi
-      cpuLimit: 2000m
+      image: registry.redhat.io/devspaces/udi-rhel9@sha256:f7325ee7259a0585e8017d4442d778a37f4c8a67d81fe70c241a014001e37539
+      volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+          
+      memoryRequest: 8Gi
+      memoryLimit: 16Gi
+      
+      cpuRequest: "4"
+      cpuLimit: "8"
+      
       mountSources: true
-    attributes:
-      container-overrides:
-        resources:
-          limits:
-            nvidia.com/mig-1g.12gb: '1'
-          requests:
-            nvidia.com/mig-1g.12gb: '1'
+     
+  - name: venv
+    volume:
+      size: 10G   # <--- ggf. anpassen
+commands:
+  - id: run
+    exec:
+      label: Run the application
+      component: python
+      workingDir: ${PROJECTS_ROOT}/ml-normal
+      commandLine: |
+        python3.11 -m venv .venv
+      group:
+        kind: run
+
+events:
+  postStart:
+    - run
+      
+
+
+
+
+
