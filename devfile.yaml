@@ -1,6 +1,6 @@
 schemaVersion: 2.2.2
 metadata:
-  name: adminworkspace
+  name: medworkspace
 projects:
   - name: medworkspace
     zip:
