@@ -2,7 +2,7 @@ schemaVersion: 2.2.2
 metadata:
   name: adminworkspace
 projects:
-  - name: adminworkspace
+  - name: medworkspace
     zip:
       location: http://devspaces-dashboard.openshift-operators.svc:8080/dashboard/api/airgap-sample/project/download?id=python
 components:
@@ -13,17 +13,17 @@ components:
         - name: venv
           path: /home/user/.venv
           
-      memoryRequest: 8Gi
-      memoryLimit: 16Gi
+      memoryRequest: 4Gi
+      memoryLimit: 8Gi
       
-      cpuRequest: "4"
-      cpuLimit: "8"
+      cpuRequest: "2"
+      cpuLimit: "4"
       
       mountSources: true
      
   - name: venv
     volume:
-      size: 10G   # <--- ggf. anpassen
+      size: 5G   
 commands:
   - id: run
     exec:
