@@ -1,8 +1,8 @@
 schemaVersion: 2.2.2
 metadata:
-  name: medworkspace
+  name: medworkspace2
 projects:
-  - name: medworkspace
+  - name: medworkspace2
     zip:
       location: http://devspaces-dashboard.openshift-operators.svc:8080/dashboard/api/airgap-sample/project/download?id=python
 components:
