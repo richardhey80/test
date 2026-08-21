@@ -1,0 +1,41 @@
+schemaVersion: 2.2.2
+metadata:
+  name: medworkspace2
+projects:
+  - name: medworkspace2
+    zip:
+      location: http://devspaces-dashboard.openshift-operators.svc:8080/dashboard/api/airgap-sample/project/download?id=python
+components:
+  - name: python
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel9@sha256:f7325ee7259a0585e8017d4442d778a37f4c8a67d81fe70c241a014001e37539
+      volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+          
+      memoryRequest: 4Gi
+      memoryLimit: 8Gi
+      
+      cpuRequest: "2"
+      cpuLimit: "4"
+      
+      mountSources: true
+     
+  - name: venv
+    volume:
+      size: 5G   
+commands:
+  - id: run
+    exec:
+      label: Run the application
+      component: python
+      workingDir: ${PROJECTS_ROOT}/ml-normal
+      commandLine: |
+        python3.11 -m venv .venv
+      group:
+        kind: run
+
+events:
+  postStart:
+    - run
+      
